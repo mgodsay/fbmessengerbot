@@ -43,7 +43,7 @@ app.post('/webhook/', function (req, res) {
   console.log("In the Post Webhook");
   var obj = JSON.stringify(req.body);
   console.log(obj);
-  messaging_events = req.body.entry[0].messaging;
+  var messaging_events = req.body.entry[0].messaging;
   console.log("length of messaging events: %d", messaging_events.length);
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
