@@ -25,8 +25,9 @@ var https = require('https');
 var http = require('http');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-// app.use(bodyParser.json());
-var jsonParser = bodyParser.json();
+app.use(bodyParser.json());
+//var jsonParser = bodyParser.json();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
   res.status(200).send('Hello, world!');
@@ -41,8 +42,8 @@ app.get('/webhook/', function (req, res) {
 })
 
 
-app.post('/webhook/', jsonParser, function (req, res) {
-  var messaging_events = req.body.entry[0].messaging;
+app.post('/webhook/', function (req, res) {
+  messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
