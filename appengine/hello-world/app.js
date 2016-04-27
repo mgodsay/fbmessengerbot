@@ -40,19 +40,13 @@ app.get('/webhook/', function (req, res) {
 
 
 app.post('/webhook/', function (req, res) {
-  console.log("In the Post Webhook");
-  var obj = JSON.stringify(req.body);
-  console.log(obj);
-  var messaging_events = req.body.entry[0].messaging;
-  console.log("length of messaging events: %d", messaging_events.length);
+  messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
     if (event.message && event.message.text) {
-      console.log("Got the message, now calling send messge");
       text = event.message.text;
       // Handle a text message from this sender
-        sendTextMessage(sender, "I got your message: How can I help? "+ text.substring(0, 200));
     }
   }
   res.sendStatus(200);
