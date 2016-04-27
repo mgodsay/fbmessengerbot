@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
     event = req.body.entry[0].messaging[i];
     sender = event.sender.id;
     if (event.message && event.message.text) {
-      console.log("Got the message, now calling send messge")
+      console.log("Got the message, now calling send messge");
       text = event.message.text;
       // Handle a text message from this sender
         sendTextMessage(sender, "I got your message: How can I help? "+ text.substring(0, 200));
