@@ -17,6 +17,7 @@
 
 
 var express = require('express');
+var request = require("request")
 var app = express();
 var port = 8080;
 //var request = require('request');
@@ -24,7 +25,8 @@ var https = require('https');
 var http = require('http');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+var jsonParser = bodyParser.json();
 
 app.get('/', function(req, res) {
   res.status(200).send('Hello, world!');
@@ -39,7 +41,7 @@ app.get('/webhook/', function (req, res) {
 })
 
 
-app.post('/webhook/', function (req, res) {
+app.post('/webhook/', jsonParser,:qfunction (req, res) {
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
