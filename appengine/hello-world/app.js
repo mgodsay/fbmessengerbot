@@ -59,6 +59,7 @@ app.post('/webhook/', function (req, res) {
 var token = "CAAT6h9nizVIBAK7iZBu50D8KDUev4rlgEYOk8mQTXcDL0ZBPndZBTWslhs2lojTX3Frwtt9k1ZB01MbZB6GCl4DYZBQbaceDfMb3PY1loXN6ZBskZASi6LZCjZBSTwCIOIGNbuRywwmkjBu1PNgDRW8ObIXnmPVAsm8CTvcBGqZABxhe60AKOzAEx9XSiaZABO8ZBnwA3gIpo5l1r5wZDZD";
 
 function sendTextMessage(sender, text) {
+console.log("In the sendTextMessage call");
   messageData = {
     text:text
   }
