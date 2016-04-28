@@ -43,26 +43,26 @@ app.get('/webhook/', function (req, res) {
 app.post('/webhook/', function (req, res) {
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
-   event = req.body.entry[0].messaging[i];
-   sender = event.sender.id;
-   if (event.message && event.message.text) {
-    text = event.message.text;
-    if (text === 'Generic') {
-      sendGenericMessage(sender);
-      continue;
-    }else{
+     event = req.body.entry[0].messaging[i];
+     sender = event.sender.id;
+    if (event.message && event.message.text) {
+      text = event.message.text;
+        if (text === 'Generic') {
+            sendGenericMessage(sender);
+            continue;
+        }else{
       // Handle a text message from this sender
-      sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+        sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+      }
     }
   }
-}
-res.sendStatus(200);
+  res.sendStatus(200);
 });
 
 var token = "CAAT6h9nizVIBAJ5o0GqEH52Wlwf8Anc8JJAzqmzJgH0ZAZAPZBTvCleKbGcrTR4fOlNRK12JiHHld2GjgT8seSkeXKveadeMEqHS6KcKYSfghHo2ux5h0doqc9WZA3WoeCgZA5QJCJWUZA8UIeh0nUpPKEOeyRXmndVm5MnmD8SqlI9YUwFlDjuEtK84fOFGSL76xI6MuhrAZDZD";
 
 function sendTextMessage(sender, text) {
-  console.log("In the sendTextMessage call");
+console.log("In the sendTextMessage call");
   messageData = {
     text:text
   }
