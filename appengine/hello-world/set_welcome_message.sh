@@ -11,7 +11,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "call_to_actions":[
     {
       "message":{
-        "text":"Hi! I'\''m N1, your personal assistant. You can always reach me here!"
+        "text":"Hello There! I'\''m Bot, your personal eBay assistant. You can always reach me here!"
       }
     }
   ]
